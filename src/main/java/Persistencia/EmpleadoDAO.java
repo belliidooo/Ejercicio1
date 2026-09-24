@@ -22,7 +22,7 @@ public class EmpleadoDAO {
 
     public void actualizar (Empleado emp) throws SQLException {
         String sql = "UPDATE Empleado SET nombre = ?, sexo = ?, categoria = ?, anyos = ?" +
-                "WHERE dni = ?;
+                "WHERE dni = ?";
 
         try (Connection conexion = ConexionDB.conexion();
         PreparedStatement ps = conexion.prepareStatement(sql)) {
