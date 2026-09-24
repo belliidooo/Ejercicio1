@@ -1,14 +1,26 @@
 package laboral;
 
+/** Representa a una persona con su nombre, DNI y sexo.
+ * @author Alberto
+ * @version 1.0
+ */
+
 public class Persona {
 
-    /** Propiedades de las personas */
+    /** Propiedades de las personas
+     * @param nombre Nombre del empleado
+     * @param dni Dni del empleado
+     * @param sexo Sexo del empleado*/
 
     public String nombre;
     public String dni;
     public char sexo;
 
-    /** Constructor con todas las propiedades */
+    /** Constructor con todas las propiedades de la persona.
+     * @param nombre Nombre de la persona.
+     * @param dni DNI de la persona.
+     * @param sexo Sexo de la persona.
+     */
 
     public Persona(String nombre, String dni, char sexo) {
         this.nombre = nombre;
@@ -17,8 +29,10 @@ public class Persona {
     }
 
     /** Constructor con las propiedades nombre y sexo.
-     * El DNI indicamos que es una cadena vacia
-     * si el constructor no lo especifica */
+     * El DNI se inicializa como una cadena vacia.
+     * @param nombre Nombre de la persona.
+     * @param sexo Sexo de la persona.
+     */
 
     public Persona(String nombre, char sexo) {
         this.nombre = nombre;
@@ -26,7 +40,9 @@ public class Persona {
         this.dni = "";
     }
 
-    /** setDni lo usamos para establecer un DNI */
+    /** Modifica el DNI de la persona.
+     * @param dni Nuevo DNI de la persona.
+     */
 
     public void setDni(String dni) {
         this.dni = dni;
