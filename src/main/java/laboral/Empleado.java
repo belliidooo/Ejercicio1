@@ -7,7 +7,7 @@ public class Empleado extends Persona{
      * tambien las de personas con el extends)
      * */
     private int categoria;
-    public int anyos;
+    public static int anyos;
 
     /**
      * Constructor con los parametros de persona
@@ -16,7 +16,7 @@ public class Empleado extends Persona{
      * @param nombre Nombre del empleado
      * @param dni DNI del empleado
      * */
-    public Empleado (String nombre, String dni, char sexo, int categoria, int anyos)  throws DatosNoCorrectosException{
+    public Empleado(String nombre, String dni, char sexo, int categoria, int anyos)  throws DatosNoCorrectosException{
         super(nombre, dni, sexo);
         if (categoria < 1 || categoria > 10 || anyos < 0) {
             throw new DatosNoCorrectosException();
@@ -54,7 +54,7 @@ public class Empleado extends Persona{
      * Obtiene la categoria del empleado.
      * @return Categoría del empleado.
      */
-    public int getCategoria() {
+    public static int getCategoria() {
         return categoria;
     }
 

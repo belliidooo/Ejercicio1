@@ -14,9 +14,9 @@ public class Persona {
      * @param sexo Sexo de la persona
      * */
 
-    public String nombre;
-    public String dni;
-    public char sexo;
+    public static String nombre;
+    public static String dni;
+    public static char sexo;
 
     /**
      * Constructor con todas las propiedades de la persona.
