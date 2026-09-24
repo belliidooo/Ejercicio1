@@ -7,16 +7,19 @@ package laboral;
 
 public class Persona {
 
-    /** Propiedades de las personas
-     * @param nombre Nombre del empleado
-     * @param dni Dni del empleado
-     * @param sexo Sexo del empleado*/
+    /**
+     * Propiedades de las personas
+     * @param nombre Nombre de la persona
+     * @param dni Dni de la persona
+     * @param sexo Sexo de la persona
+     * */
 
     public String nombre;
     public String dni;
     public char sexo;
 
-    /** Constructor con todas las propiedades de la persona.
+    /**
+     * Constructor con todas las propiedades de la persona.
      * @param nombre Nombre de la persona.
      * @param dni DNI de la persona.
      * @param sexo Sexo de la persona.
@@ -28,7 +31,8 @@ public class Persona {
         this.sexo = sexo;
     }
 
-    /** Constructor con las propiedades nombre y sexo.
+    /**
+     * Constructor con las propiedades nombre y sexo.
      * El DNI se inicializa como una cadena vacia.
      * @param nombre Nombre de la persona.
      * @param sexo Sexo de la persona.
@@ -40,7 +44,8 @@ public class Persona {
         this.dni = "";
     }
 
-    /** Modifica el DNI de la persona.
+    /**
+     * Modifica el DNI de la persona.
      * @param dni Nuevo DNI de la persona.
      */
 
@@ -48,7 +53,9 @@ public class Persona {
         this.dni = dni;
     }
 
-    /** Este metodo nos muestra en pantalla el nombre y el DNI */
+    /**
+     * Este metodo nos muestra en pantalla el nombre y el DNI
+     * */
 
     public void imprime() {
         System.out.println("Nombre: " + nombre);
