@@ -1,9 +1,9 @@
-package Persistencia;
+package persistencia;
 
 import java.sql.*;
 
 public class ConexionDB {
-    private static final String URL = "jdbc:mariadb://localhost:3306/nomina";
+    private static final String URL = "jdbc:mariadb://localhost:3306/nominas";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "1234";
 
