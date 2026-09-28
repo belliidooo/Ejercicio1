@@ -1,6 +1,8 @@
 package persistencia;
 
 import java.sql.*;
+import java.util.ArrayList;
+
 import laboral.*;
 
 public class EmpleadoDAO {
@@ -20,21 +22,25 @@ public class EmpleadoDAO {
         }
     }
 
-    public static void actualizar (Empleado emp) throws SQLException {
-        String sql = "UPDATE Empleado SET nombre = ?, sexo = ?, categoria = ?, anyos = ?" +
+    public static void actualizar(Empleado emp, String dniOriginal) throws SQLException {
+
+        String sql = "UPDATE Empleado SET nombre = ?, dni = ?, sexo = ?, categoria = ?, anyos = ? " +
                 "WHERE dni = ?";
 
         try (Connection conexion = ConexionDB.conexion();
-        PreparedStatement ps = conexion.prepareStatement(sql)) {
+             PreparedStatement ps = conexion.prepareStatement(sql)) {
+
             ps.setString(1, emp.nombre);
-            ps.setString(2, String.valueOf(emp.sexo));
-            ps.setInt(3, emp.getCategoria());
-            ps.setInt(4, emp.anyos);
-            ps.setString(5, emp.dni);
+            ps.setString(2, emp.dni);
+            ps.setString(3, String.valueOf(emp.sexo));
+            ps.setInt(4, emp.getCategoria());
+            ps.setInt(5, emp.anyos);
+            ps.setString(6, dniOriginal);
 
             ps.executeUpdate();
         }
     }
+
 
     public static void mostrar () throws SQLException {
         String sql = "SELECT * FROM empleados";
@@ -57,6 +63,60 @@ public class EmpleadoDAO {
                 System.out.println("Años trabajados: " + anyos);
             }
         }
+    }
+
+    public static Empleado buscarPorDni(String dni) throws SQLException, DatosNoCorrectosException{
+
+        String sql = "SELECT dni, nombre, sexo, categoria, anyos FROM Empleado " +
+                "WHERE dni = ?";
+
+        try (Connection conexion = ConexionDB.conexion();
+             PreparedStatement ps = conexion.prepareStatement(sql)) {
+
+            ps.setString(1, dni);
+
+            try (ResultSet rs = ps.executeQuery()) {
+
+                if (rs.next()) {
+
+                    Empleado emp = new Empleado();
+
+                    emp.dni = rs.getString("dni");
+                    emp.nombre = rs.getString("nombre");
+                    emp.sexo = rs.getString("sexo").charAt(0);
+                    emp.setCategoria(rs.getInt("categoria"));
+                    emp.anyos = rs.getInt("anyos");
+
+                    return emp;
+                }
+            }
+        }
+
+        return null;
+    }
+
+    public static ArrayList<Empleado> obtenerTodos() throws SQLException, DatosNoCorrectosException {
+        ArrayList<Empleado> empleados = new ArrayList<>();
+
+        String sql = "SELECT dni, nombre, sexo, categoria, anyos FROM Empleado";
+
+        try (Connection conexion = ConexionDB.conexion();
+        PreparedStatement ps = conexion.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+                Empleado emp = new Empleado();
+
+                emp.dni = rs.getString("dni");
+                emp.nombre = rs.getString("nombre");
+                emp.sexo = rs.getString("sexo").charAt(0);
+                emp.setCategoria(rs.getInt("categoria"));
+                emp.anyos = rs.getInt("anyos");
+
+                empleados.add(emp);
+            }
+        }
+        return empleados;
     }
 
 }

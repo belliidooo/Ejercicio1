@@ -7,7 +7,7 @@ public class Empleado extends Persona{
      * tambien las de personas con el extends)
      * */
     private int categoria;
-    public int anyos;
+    public static int anyos;
 
     /**
      * Constructor con los parametros de persona
@@ -34,6 +34,10 @@ public class Empleado extends Persona{
      * */
     public Empleado(String nombre, char sexo, String dni) throws DatosNoCorrectosException {
         this(nombre, dni, sexo, 1, 0);
+    }
+
+    public Empleado() {
+        super();
     }
 
     /**

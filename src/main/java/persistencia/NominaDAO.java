@@ -23,5 +23,20 @@ public class NominaDAO {
          }
     }
 
+    public static void actualizarSueldo(String dni, int sueldo) throws SQLException {
+
+        String sql = "UPDATE nominas SET sueldo = ? WHERE dni = ?";
+
+        try (Connection conn = ConexionDB.conexion();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setInt(1, sueldo);
+            ps.setString(2, dni);
+
+            ps.executeUpdate();
+        }
+    }
+
+
 }
 

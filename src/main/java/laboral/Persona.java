@@ -44,6 +44,10 @@ public class Persona {
         this.dni = "";
     }
 
+    public Persona() {
+
+    }
+
     /**
      * Modifica el DNI de la persona.
      * @param dni Nuevo DNI de la persona.
